@@ -1,12 +1,32 @@
 frequency = 0
+frequencies = {}
+first_repeated_frequency = False
+
+def checkFrequency(frequency):
+    global frequencies
+    global first_repeated_frequency
+    print(frequency)
+    if frequency not in frequencies:        
+        frequencies[frequency] = 1
+    else:
+        print('FOUND!')    
+        first_repeated_frequency = True
+
+
 def add(value):
     global frequency
-    frequency = frequency + value    
-
+    global first_repeated_frequency
+    frequency = frequency + value
+    if not first_repeated_frequency:
+        checkFrequency(frequency)
+    
 
 def substract(value):
     global frequency
+    global first_repeated_frequency
     frequency = frequency - value
+    if not first_repeated_frequency:
+        checkFrequency(frequency)
 
 
 def doOperation(operator, value):    
@@ -23,6 +43,8 @@ def calculateFrequency():
         value = line[1:]
         doOperation(operator, value)        
     print(frequency)
+    #print(frequencies)
+
 
 calculateFrequency()
     

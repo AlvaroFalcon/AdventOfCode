@@ -5,11 +5,10 @@ first_repeated_frequency = False
 def checkFrequency(frequency):
     global frequencies
     global first_repeated_frequency
-    print(frequency)
     if frequency not in frequencies:        
         frequencies[frequency] = 1
     else:
-        print('FOUND!')    
+        print('FOUND! {}'.format(frequency))    
         first_repeated_frequency = True
 
 
@@ -35,17 +34,14 @@ def doOperation(operator, value):
     else:
         substract(int(value))
 
-def calculateFrequency():
-    file = open('day_one_input.txt','r')
-
-    for line in file:
-        operator = line[0]
-        value = line[1:]
-        doOperation(operator, value)        
-    print(frequency)
-    #print(frequencies)
-
-
+def calculateFrequency():    
+    while not first_repeated_frequency:
+		file = open('day_one_input.txt','r')
+        	for line in file:
+            		operator = line[0]
+            		value = line[1:]
+            		doOperation(operator, value)
+			
 calculateFrequency()
     
     
